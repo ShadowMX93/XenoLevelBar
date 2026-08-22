@@ -28,7 +28,7 @@ chmod +x gradlew
 Output:
 
 ```text
-build/libs/XenoLevelBar-1.2.1.jar
+build/libs/XenoLevelBar-1.0.0.jar
 ```
 
 ## Windows
@@ -42,7 +42,7 @@ gradlew.bat clean build
 Output:
 
 ```text
-build\libs\XenoLevelBar-1.2.1.jar
+build\libs\XenoLevelBar-1.0.0.jar
 ```
 
 ## Installed Gradle
@@ -66,7 +66,7 @@ mvn clean package
 Output:
 
 ```text
-target/XenoLevelBar-1.2.1.jar
+target/XenoLevelBar-1.0.0.jar
 ```
 
 ## Compatibility target

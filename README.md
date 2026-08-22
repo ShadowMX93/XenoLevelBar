@@ -4,7 +4,7 @@ A Paper plugin that displays **XenoLevels progression on a separate BossBar** wh
 
 ## Compatibility
 
-XenoLevelBar 1.2.1 is built against the **Paper 1.18 API** and emits **Java 17 bytecode** so the same plugin can be used across a broad range of Paper versions.
+XenoLevelBar 1.0.0 is built against the **Paper 1.18 API** and emits **Java 17 bytecode** so the same plugin can be used across a broad range of Paper versions.
 
 - Paper: **1.18+**
 - Plugin bytecode: **Java 17**
@@ -56,7 +56,7 @@ gradlew.bat clean build
 Gradle output:
 
 ```text
-build/libs/XenoLevelBar-1.2.1.jar
+build/libs/XenoLevelBar-1.0.0.jar
 ```
 
 The included Gradle bootstrap scripts download the pinned Gradle distribution automatically on first use. Build with **JDK 17 or newer**; the Java compiler is forced to output Java 17-compatible bytecode.
@@ -70,7 +70,7 @@ mvn clean package
 Maven output:
 
 ```text
-target/XenoLevelBar-1.2.1.jar
+target/XenoLevelBar-1.0.0.jar
 ```
 
 See `BUILDING.md` for Linux and Windows details.
@@ -111,13 +111,10 @@ Normal PlaceholderAPI placeholders may also be used in the BossBar title.
 
 A server-only Paper plugin cannot create a literal second native vanilla XP bar at the bottom of an unmodified Minecraft client. XenoLevelBar therefore uses a BossBar while keeping vanilla XP completely independent.
 
-## v1.2.1
+## v1.0.0
 
-- Fixed PlaceholderAPI dependency resolution by moving builds to the current releases repository.
-- GitHub Actions now builds with Gradle and Java 17 instead of the old Maven/Java 25 workflow.
-- Retargeted the plugin from Paper 26.2 to the Paper 1.18 API.
-- Changed `api-version` to `1.18` so Paper 1.18+ can load it.
-- Changed compiler target from Java 25 to Java 17.
-- Gradle and Maven now both emit Java 17 bytecode.
-- Kept compatibility with modern Paper by using only long-standing Bukkit/Paper APIs.
-- Gradle builds work on Linux and Windows with JDK 17 or newer.
+- First public release of XenoLevelBar.
+- Displays XenoLevels progression on a separate, configurable BossBar.
+- Keeps Minecraft's vanilla XP bar and level untouched.
+- Supports Paper 1.18+, Java 17 bytecode, PlaceholderAPI, and named XenoLevels systems.
+- Includes configurable visibility, messages, permissions, commands, and persistent per-player toggles.
