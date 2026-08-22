@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.xenolevelbar'
-version = '1.0.0'
+version = '1.1.0'
 
 description = 'Separate BossBar HUD for XenoLevels progression on Paper 1.18+.'
 
@@ -27,6 +27,9 @@ dependencies {
     // PlaceholderAPI 2.11.6 is available from the current public releases repository
     // and provides the setPlaceholders API used by XenoLevelBar.
     compileOnly 'me.clip:placeholderapi:2.11.6'
+
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 java {
@@ -43,6 +46,10 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.processResources {
     filteringCharset = 'UTF-8'
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.jar {
