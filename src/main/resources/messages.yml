@@ -1,4 +1,4 @@
-# XenoLevelBar 1.2.0 messages
+# XenoLevelBar 1.1.0 messages
 #
 # Supports normal & color codes and hex colors like &#D14CFF.
 # PlaceholderAPI placeholders work in messages sent to players.
@@ -12,6 +12,14 @@ commands:
   reloaded: "&aConfiguration and messages reloaded."
   no-permission: "&cYou do not have permission to do that."
   player-only: "&cOnly players can use this command."
+  update-checking: "&eChecking GitHub for updates..."
+  update-available: "&eUpdate available: &f%current% &7-> &a%latest%&7. Run &f/xlb update download&7 to stage it."
+  update-current: "&aYou are running the latest release (&f%current%&a)."
+  update-download-start: "&eDownloading XenoLevelBar %latest%..."
+  update-downloaded: "&aDownloaded %latest% to &f%path%&a. Restart the server to install it."
+  update-failed: "&cUpdate failed: %error%"
+  update-disabled: "&eThe updater is disabled in config.yml."
+  update-usage: "&eUsage: /xlb update <check|download>"
 
 # %label% is replaced with the command alias the sender used.
 help:
@@ -20,8 +28,12 @@ help:
   - "&f/%label% toggle &8- &7Show/hide your XenoLevels bar"
   - "&f/%label% status &8- &7Show plugin and HUD diagnostics"
   - "&f/%label% reload &8- &7Reload config.yml and messages.yml"
+  - "&f/%label% update check &8- &7Check GitHub for updates"
+  - "&f/%label% update download &8- &7Stage the latest update"
   - "&8&m--------------------------------"
 
+# Available update tokens:
+# %current% %latest% %release_url% %path% %error%
 # Available status tokens:
 # %version% %system% %placeholderapi_state% %xenolevels_state%
 # Player-only: %placeholder_data_state% %level% %exp% %required% %remaining%
