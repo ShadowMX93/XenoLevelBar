@@ -28,12 +28,14 @@ The server itself must still run the Java version required by that Paper release
 - Per-player `/xlb toggle`, persisted in `players.yml`
 - `/xlb status` explains why a HUD is hidden
 - `/xlb reload` reloads both `config.yml` and `messages.yml`
+- GitHub release updater with startup checks and manual download/staging commands
+- Update downloads are validated as XenoLevelBar JARs before being staged for the next restart
 - Safely handles temporary missing XenoLevels user data, including after `/xlv delete`
 
 ## Configuration files
 
-- `config.yml` — behavior, XenoLevels system, permissions, BossBar and visibility
-- `messages.yml` — all player-facing command/help/status text
+- `config.yml` — behavior, updater settings, XenoLevels system, permissions, BossBar and visibility
+- `messages.yml` — all player-facing command/help/status/updater text
 - `players.yml` — generated automatically; stores players who toggled the HUD off
 
 ## Build
@@ -44,19 +46,19 @@ Linux / macOS:
 
 ```bash
 chmod +x gradlew
-./gradlew clean build
+./gradlew clean test build
 ```
 
 Windows:
 
 ```bat
-gradlew.bat clean build
+gradlew.bat clean test build
 ```
 
 Gradle output:
 
 ```text
-build/libs/XenoLevelBar-1.0.0.jar
+build/libs/XenoLevelBar-1.1.0.jar
 ```
 
 The included Gradle bootstrap scripts download the pinned Gradle distribution automatically on first use. Build with **JDK 17 or newer**; the Java compiler is forced to output Java 17-compatible bytecode.
@@ -70,7 +72,7 @@ mvn clean package
 Maven output:
 
 ```text
-target/XenoLevelBar-1.0.0.jar
+target/XenoLevelBar-1.1.0.jar
 ```
 
 See `BUILDING.md` for Linux and Windows details.
@@ -85,11 +87,28 @@ See `BUILDING.md` for Linux and Windows details.
 
 Existing `players.yml`, `config.yml`, and `messages.yml` can be kept when upgrading.
 
+### Built-in updater
+
+The updater checks the latest GitHub Release asynchronously and never blocks the main server thread.
+
+Default behavior:
+
+- `updater.enabled: true`
+- `updater.check-on-startup: true`
+- `updater.auto-download: false`
+- `updater.notify-admins: true`
+
+Use `/xlb update check` to check GitHub manually. Use `/xlb update download` to download and validate the latest release JAR and stage it in Bukkit/Paper's configured update folder. A full server restart is required to install the staged update.
+
+Set `updater.auto-download: true` if you want new releases automatically downloaded after the startup check. Installation still waits for a normal restart; the plugin does not hot-swap its live JAR.
+
 ## Commands
 
 - `/xlb toggle` — hide/show your XenoLevels BossBar
 - `/xlb status` — diagnostics, current values, and HUD visibility reason
 - `/xlb reload` — reload `config.yml` and `messages.yml` (admin)
+- `/xlb update check` — check the latest GitHub Release (admin)
+- `/xlb update download` — download and stage the latest release for restart (admin)
 - `/xlb help` — command help
 
 Aliases: `/xlbar`, `/xenolevelbar`
@@ -97,7 +116,7 @@ Aliases: `/xlbar`, `/xenolevelbar`
 ## Permissions
 
 - `xenolevelbar.use` — default: everyone
-- `xenolevelbar.admin` — default: operators
+- `xenolevelbar.admin` — default: operators; also controls updater commands
 
 The nodes used by XenoLevelBar can be changed under `permissions:` in `config.yml`.
 
@@ -110,6 +129,14 @@ Normal PlaceholderAPI placeholders may also be used in the BossBar title.
 ## Important
 
 A server-only Paper plugin cannot create a literal second native vanilla XP bar at the bottom of an unmodified Minecraft client. XenoLevelBar therefore uses a BossBar while keeping vanilla XP completely independent.
+
+## v1.1.0
+
+- Added asynchronous GitHub Release update checks.
+- Added `/xlb update check` and `/xlb update download` admin commands.
+- Added optional startup auto-download and admin update notifications.
+- Downloads are validated against `plugin.yml` before being staged in the Bukkit/Paper update folder.
+- Added JUnit coverage for updater version comparison and branch CI testing.
 
 ## v1.0.0
 
