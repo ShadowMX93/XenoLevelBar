@@ -1,0 +1,16 @@
+# Gradle
+.gradle/
+.gradle-bootstrap/
+build/
+
+# Maven
+target/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.xenolevelbar'
+version = '1.2.1'
+
+description = 'Separate BossBar HUD for XenoLevels progression on Paper 1.18+.'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc'
+        url = uri('https://repo.papermc.io/repository/maven-public/')
+    }
+    maven {
+        name = 'placeholderapi'
+        url = uri('https://repo.extendedclip.com/releases/')
+    }
+}
+
+dependencies {
+    // Compile against the oldest supported Paper API so the resulting bytecode
+    // only references API that exists on Paper 1.18 and newer.
+    compileOnly 'io.papermc.paper:paper-api:1.18-R0.1-SNAPSHOT'
+
+    // PlaceholderAPI 2.11.6 is available from the current public releases repository
+    // and provides the setPlaceholders API used by XenoLevelBar.
+    compileOnly 'me.clip:placeholderapi:2.11.6'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    // JDK 17 is the minimum for Minecraft/Paper 1.18. Building on newer JDKs
+    // still produces Java 17 bytecode.
+    options.release = 17
+}
+
+tasks.processResources {
+    filteringCharset = 'UTF-8'
+}
+
+tasks.jar {
+    archiveBaseName = 'XenoLevelBar'
+    archiveVersion = project.version.toString()
+}
+
+tasks.named('build') {
+    dependsOn tasks.named('jar')
+}
