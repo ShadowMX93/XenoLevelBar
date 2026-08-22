@@ -1,5 +1,5 @@
 name: XenoLevelBar
-version: '1.0.0'
+version: '1.1.0'
 main: com.xenolevelbar.XenoLevelBarPlugin
 description: Displays XenoLevels progression on a separate, configurable BossBar without touching vanilla XP.
 author: ShadowMX
@@ -10,7 +10,7 @@ softdepend: [XenoLevels]
 commands:
   xenolevelbar:
     description: Manage the XenoLevelBar HUD.
-    usage: /<command> [toggle|status|reload|help]
+    usage: /<command> [toggle|status|reload|update|help]
     aliases: [xlbar, xlb]
 
 permissions:
@@ -18,5 +18,5 @@ permissions:
     description: Allows the player to see and toggle the XenoLevelBar.
     default: true
   xenolevelbar.admin:
-    description: Allows reloading and inspecting XenoLevelBar.
+    description: Allows reloading, updater commands and inspecting XenoLevelBar.
     default: op
