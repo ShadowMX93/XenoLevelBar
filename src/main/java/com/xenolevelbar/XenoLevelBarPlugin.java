@@ -16,6 +16,7 @@ import java.util.Objects;
 
 public final class XenoLevelBarPlugin extends JavaPlugin implements Listener {
 
+    private ConfigUpdateService configUpdateService;
     private ToggleStore toggleStore;
     private XenoPlaceholderService placeholderService;
     private BossBarService bossBarService;
@@ -25,7 +26,13 @@ public final class XenoLevelBarPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
+        configUpdateService = new ConfigUpdateService(this);
+        if (!applyConfigUpdates()) {
+            getLogger().severe("Could not safely update config.yml. Disabling XenoLevelBar to protect the existing configuration.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
         messageService = new MessageService(this);
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
@@ -98,16 +105,41 @@ public final class XenoLevelBarPlugin extends JavaPlugin implements Listener {
         return getConfig().getString("permissions.admin", "xenolevelbar.admin");
     }
 
-    public void reloadPlugin() {
-        reloadConfig();
+    public boolean reloadPlugin() {
+        if (!applyConfigUpdates()) {
+            return false;
+        }
         messageService.reload();
         placeholderService.reload();
         bossBarService.reload();
         startUpdateTask();
+        return true;
     }
 
     File pluginFile() {
         return getFile();
+    }
+
+    private boolean applyConfigUpdates() {
+        try {
+            ConfigUpdateService.UpdateResult result = configUpdateService.update();
+            if (result.changed()) {
+                getLogger().info(
+                        "Updated config.yml with " + result.addedPaths().size() + " new option(s). Backup saved to "
+                                + result.backupFile() + "."
+                );
+            }
+            if (!result.conflicts().isEmpty()) {
+                getLogger().warning(
+                        "Could not auto-add config section(s) because existing values use those paths: "
+                                + String.join(", ", result.conflicts())
+                );
+            }
+            return true;
+        } catch (Exception exception) {
+            getLogger().severe("config.yml update failed: " + rootMessage(exception));
+            return false;
+        }
     }
 
     private void startUpdateTask() {
