@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - main
     paths-ignore:
-      - .github/ci-success.txt
+      - .github/ci-result.txt
   workflow_dispatch:
 
 permissions:
@@ -26,18 +26,44 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Test and build with Gradle
+      - name: Run Gradle tests and build
+        id: gradle
+        shell: bash
         run: |
           chmod +x gradlew
-          ./gradlew clean test build --no-daemon
+          set +e
+          ./gradlew clean test build --no-daemon > ci-build.log 2>&1
+          CODE=$?
+          set -e
+          echo "exit_code=$CODE" >> "$GITHUB_OUTPUT"
+          tail -n 200 ci-build.log > .github/ci-result.txt
 
-      - name: Record passing commit
+      - name: Record CI result on branch
+        if: always()
+        shell: bash
         env:
           TESTED_SHA: ${{ github.sha }}
+          EXIT_CODE: ${{ steps.gradle.outputs.exit_code }}
         run: |
-          printf '%s\n' "$TESTED_SHA" > .github/ci-success.txt
+          if [ "$EXIT_CODE" = "0" ]; then
+            STATUS="PASS"
+          else
+            STATUS="FAIL"
+          fi
+          {
+            echo "status=$STATUS"
+            echo "tested_sha=$TESTED_SHA"
+            echo "exit_code=${EXIT_CODE:-unknown}"
+            echo
+            cat .github/ci-result.txt 2>/dev/null || true
+          } > .github/ci-result.next
+          mv .github/ci-result.next .github/ci-result.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/ci-success.txt
-          git commit -m "Record passing CI for $TESTED_SHA"
+          git add .github/ci-result.txt
+          git commit -m "Record CI result for $TESTED_SHA" || true
           git push origin HEAD:"$GITHUB_REF_NAME"
+
+      - name: Fail workflow if Gradle failed
+        if: steps.gradle.outputs.exit_code != '0'
+        run: exit 1
