@@ -1,4 +1,4 @@
-# XenoLevelBar 1.2.0
+# XenoLevelBar 1.1.0
 #
 # XenoLevelBar never changes vanilla Minecraft XP. It only reads XenoLevels
 # PlaceholderAPI values and renders them on a separate BossBar.
@@ -18,6 +18,24 @@ join-delay-ticks: 10
 # wait this long before asking its placeholders again. This prevents exception spam.
 placeholder-failure-retry-ticks: 40
 
+# GitHub release updater.
+# Checks are asynchronous and do not block the Paper server thread.
+updater:
+  enabled: true
+
+  # Check https://github.com/ShadowMX93/XenoLevelBar/releases when the plugin starts.
+  check-on-startup: true
+
+  # If an update is found, download it into Bukkit's configured update folder.
+  # Paper/Bukkit installs the staged JAR on the next full server restart.
+  auto-download: false
+
+  # Notify online admins after login when a cached update is available.
+  notify-admins: true
+
+  # Timeout for GitHub API and download requests.
+  timeout-seconds: 10
+
 # "default" uses %xlv_level%, %xlv_exp%, etc.
 # A named system such as "mining" uses %xlv_mining_level%, %xlv_mining_exp%, etc.
 system: default
@@ -27,7 +45,7 @@ permissions:
   # Set to "" if you do not want a permission requirement.
   view: xenolevelbar.use
 
-  # Permission required for /xlb reload and console diagnostics.
+  # Permission required for /xlb reload, updater commands and console diagnostics.
   admin: xenolevelbar.admin
 
 bossbar:
