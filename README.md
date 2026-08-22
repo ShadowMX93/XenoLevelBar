@@ -4,7 +4,7 @@ A Paper plugin that displays **XenoLevels progression on a separate BossBar** wh
 
 ## Compatibility
 
-XenoLevelBar 1.0.0 is built against the **Paper 1.18 API** and emits **Java 17 bytecode** so the same plugin can be used across a broad range of Paper versions.
+XenoLevelBar is built against the **Paper 1.18 API** and emits **Java 17 bytecode** so the same plugin can be used across a broad range of Paper versions.
 
 - Paper: **1.18+**
 - Plugin bytecode: **Java 17**
