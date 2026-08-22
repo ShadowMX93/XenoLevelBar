@@ -1,10 +1,14 @@
-# XenoLevelBar 1.1.0
+# XenoLevelBar 1.1.1
 #
 # XenoLevelBar never changes vanilla Minecraft XP. It only reads XenoLevels
 # PlaceholderAPI values and renders them on a separate BossBar.
 #
 # Player-facing text is in messages.yml.
 # Per-player toggle choices are stored automatically in players.yml.
+# Missing settings are merged into existing config.yml files automatically.
+
+# Internal config schema version. Do not change this manually.
+config-version: 1
 
 enabled: true
 
