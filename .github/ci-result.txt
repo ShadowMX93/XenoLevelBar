@@ -1,0 +1,173 @@
+status=FAIL
+tested_sha=95e62c7f5cbe2dd29cb468d1cc47375dc83a0dd2
+exit_code=1
+
+Gradle 9.7.1 is not cached; downloading it...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   169  100   169    0     0   4957      0 --:--:-- --:--:-- --:--:--  4970
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 93  144M   93  134M    0     0   162M      0 --:--:-- --:--:-- --:--:--  162M100  144M  100  144M    0     0   165M      0 --:--:-- --:--:-- --:--:--  256M
+
+Welcome to Gradle 9.7.1!
+
+Here are the highlights of this release:
+ - Isolated Projects graduates to incubating
+ - Broader Configuration Cache compatibility
+ - Resilient Sync helps you fix broken builds
+ - More source locations in problem reports
+
+For more details see https://docs.gradle.org/9.7.1/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :clean UP-TO-DATE
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :jar
+
+> Task :compileTestJava FAILED
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:3: error: package org.bukkit.configuration.file does not exist
+import org.bukkit.configuration.file.YamlConfiguration;
+                                    ^
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:16: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:16: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+                                        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:20: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:20: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+                                         ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:38: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:38: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+                                        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:39: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:39: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+                                         ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:50: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:50: error: cannot find symbol
+        YamlConfiguration current = new YamlConfiguration();
+                                        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:53: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+        ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+/home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:53: error: cannot find symbol
+        YamlConfiguration defaults = new YamlConfiguration();
+                                         ^
+  symbol:   class YamlConfiguration
+  location: class ConfigUpdateServiceTest
+13 errors
+
+[Incubating] Problems report is available at: file:///home/runner/work/XenoLevelBar/XenoLevelBar/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileTestJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:16: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:16: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+                                          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:20: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:20: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+                                           ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:38: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:38: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+                                          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:39: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:39: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+                                           ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:50: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:50: error: cannot find symbol
+          YamlConfiguration current = new YamlConfiguration();
+                                          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:53: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+          ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:53: error: cannot find symbol
+          YamlConfiguration defaults = new YamlConfiguration();
+                                           ^
+    symbol:   class YamlConfiguration
+    location: class ConfigUpdateServiceTest
+  /home/runner/work/XenoLevelBar/XenoLevelBar/src/test/java/com/xenolevelbar/ConfigUpdateServiceTest.java:3: error: package org.bukkit.configuration.file does not exist
+  import org.bukkit.configuration.file.YamlConfiguration;
+                                      ^
+  13 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 22s
+5 actionable tasks: 4 executed, 1 up-to-date
