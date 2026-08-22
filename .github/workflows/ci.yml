@@ -4,10 +4,12 @@ on:
   push:
     branches-ignore:
       - main
+    paths-ignore:
+      - .github/ci-success.txt
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test:
@@ -28,3 +30,14 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew clean test build --no-daemon
+
+      - name: Record passing commit
+        env:
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          printf '%s\n' "$TESTED_SHA" > .github/ci-success.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/ci-success.txt
+          git commit -m "Record passing CI for $TESTED_SHA"
+          git push
