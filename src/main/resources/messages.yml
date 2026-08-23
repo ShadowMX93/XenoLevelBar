@@ -1,6 +1,8 @@
 # XenoLevelBar 1.1.0 messages
 #
-# Supports normal & color codes and hex colors like &#D14CFF.
+# Supports MiniMessage tags such as <green>, <gradient:red:blue> and <bold>.
+# Legacy &/§ color codes and hex colors like &#D14CFF remain supported.
+# MiniMessage and legacy codes can be used in the same message.
 # PlaceholderAPI placeholders work in messages sent to players.
 # Set a single message to "" to disable it.
 
