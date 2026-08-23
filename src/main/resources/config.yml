@@ -57,8 +57,10 @@ bossbar:
   # %level% %exp% %required% %remaining% %percent% %max_level% %system%
   # Any PlaceholderAPI placeholder can also be used here.
   #
-  # Legacy colors: &a &b &c etc.
-  # Hex colors: &#RRGGBB (example: &#D14CFF)
+  # MiniMessage: <green>, <#D14CFF>, <gradient:red:blue>, <bold>, etc.
+  # Legacy colors: &a, §a, &l, etc.
+  # Legacy hex colors: &#RRGGBB (example: &#D14CFF)
+  # MiniMessage and legacy codes can be used in the same value.
   title: "&#D14CFFLevel &f%level% &8• &b%exp%&7/&b%required% EXP &8(&f%percent%%&8)"
 
   # PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE

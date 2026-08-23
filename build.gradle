@@ -24,6 +24,11 @@ dependencies {
     // only references API that exists on Paper 1.18 and newer.
     compileOnly 'io.papermc.paper:paper-api:1.18-R0.1-SNAPSHOT'
 
+    // Paper 1.18.2+ provides Adventure and MiniMessage at runtime. Keeping these
+    // declarations compile-only avoids bundling a conflicting Adventure copy.
+    compileOnly 'net.kyori:adventure-text-minimessage:4.10.1'
+    compileOnly 'net.kyori:adventure-text-serializer-legacy:4.10.1'
+
     // PlaceholderAPI 2.11.6 is available from the current public releases repository
     // and provides the setPlaceholders API used by XenoLevelBar.
     compileOnly 'me.clip:placeholderapi:2.11.6'
@@ -31,6 +36,8 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'io.papermc.paper:paper-api:1.18-R0.1-SNAPSHOT'
+    testImplementation 'net.kyori:adventure-text-minimessage:4.10.1'
+    testImplementation 'net.kyori:adventure-text-serializer-legacy:4.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
 }
 

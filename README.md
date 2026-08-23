@@ -6,7 +6,7 @@ A Paper plugin that displays **XenoLevels progression on a separate BossBar** wh
 
 XenoLevelBar is built against the **Paper 1.18 API** and emits **Java 17 bytecode** so the same plugin can be used across a broad range of Paper versions.
 
-- Paper: **1.18+**
+- Paper: **1.18.2+**
 - Plugin bytecode: **Java 17**
 - PlaceholderAPI: install a release compatible with your Minecraft/Paper version
 - XenoLevels: install a release compatible with your Minecraft/Paper version
@@ -21,7 +21,8 @@ The server itself must still run the Java version required by that Paper release
 - Reads XenoLevels through official `%xlv_*%` PlaceholderAPI values
 - Supports default or named XenoLevels systems
 - Configurable BossBar title, color, style, flags and update timing
-- Legacy `&` colors and `&#RRGGBB` hex colors
+- MiniMessage formatting, including gradients, decorations, hover and click events
+- Legacy `&`/`§` colors and `&#RRGGBB` hex colors (including mixed MiniMessage/legacy text)
 - World whitelist/blacklist and gamemode visibility controls
 - Fully separate `messages.yml` for commands, help, status output, states and hide reasons
 - PlaceholderAPI placeholders inside player-facing messages and the BossBar title
@@ -125,6 +126,17 @@ The nodes used by XenoLevelBar can be changed under `permissions:` in `config.ym
 `%level%`, `%exp%`, `%required%`, `%remaining%`, `%percent%`, `%max_level%`, `%system%`
 
 Normal PlaceholderAPI placeholders may also be used in the BossBar title.
+
+Both the BossBar title and every entry in `messages.yml` support MiniMessage,
+legacy `&`/`§` codes and `&#RRGGBB` hex colors. Examples:
+
+```yaml
+title: "<gradient:#D14CFF:#55FFFF><bold>Level %level%</bold></gradient> &8• &f%percent%%"
+prefix: "<dark_gray>[<gradient:#D14CFF:#55FFFF>XenoLevelBar</gradient>]</dark_gray> "
+```
+
+MiniMessage click and hover events are preserved in chat messages. BossBar titles
+only display visual formatting because Minecraft BossBars do not support events.
 
 ## Important
 

@@ -1,7 +1,7 @@
 package com.xenolevelbar;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -11,12 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public final class MessageService {
-
-    private static final Pattern HEX_PATTERN = Pattern.compile("(?i)&#([0-9a-f]{6})");
 
     private final XenoLevelBarPlugin plugin;
     private final File file;
@@ -98,7 +94,7 @@ public final class MessageService {
         return replaceTokens(get("reasons." + key, fallback), tokens);
     }
 
-    public String format(CommandSender sender, String text, Map<String, String> tokens) {
+    public Component format(CommandSender sender, String text, Map<String, String> tokens) {
         String result = replaceTokens(text, tokens);
         if (sender instanceof Player player) {
             try {
@@ -109,7 +105,7 @@ public final class MessageService {
                 // should still be sent instead of propagating that exception.
             }
         }
-        return color(result);
+        return TextFormatter.deserialize(result);
     }
 
     private static String replaceTokens(String text, Map<String, String> tokens) {
@@ -120,20 +116,7 @@ public final class MessageService {
         return result;
     }
 
-    @SuppressWarnings("deprecation")
     public static String color(String input) {
-        String text = input == null ? "" : input;
-        Matcher matcher = HEX_PATTERN.matcher(text);
-        StringBuffer buffer = new StringBuffer();
-        while (matcher.find()) {
-            String hex = matcher.group(1);
-            StringBuilder replacement = new StringBuilder("§x");
-            for (char c : hex.toCharArray()) {
-                replacement.append('§').append(c);
-            }
-            matcher.appendReplacement(buffer, Matcher.quoteReplacement(replacement.toString()));
-        }
-        matcher.appendTail(buffer);
-        return ChatColor.translateAlternateColorCodes('&', buffer.toString());
+        return TextFormatter.serializeLegacy(input);
     }
 }

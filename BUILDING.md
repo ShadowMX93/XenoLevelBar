@@ -74,8 +74,9 @@ target/XenoLevelBar-1.1.0.jar
 Both build systems compile against:
 
 ```text
-Paper API:       1.18-R0.1-SNAPSHOT
+Paper API:       1.18-R0.1-SNAPSHOT (runtime: Paper 1.18.2+)
 PlaceholderAPI:  2.11.6 (compile-only API)
+Adventure:       4.10.1 (compile-only; provided by Paper)
 Java release:    17
 plugin api-version: 1.18
 ```
