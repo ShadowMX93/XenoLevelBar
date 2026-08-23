@@ -59,7 +59,7 @@ gradlew.bat clean test build
 Gradle output:
 
 ```text
-build/libs/XenoLevelBar-1.1.0.jar
+build/libs/XenoLevelBar-1.1.2.jar
 ```
 
 The included Gradle bootstrap scripts download the pinned Gradle distribution automatically on first use. Build with **JDK 17 or newer**; the Java compiler is forced to output Java 17-compatible bytecode.
@@ -73,7 +73,7 @@ mvn clean package
 Maven output:
 
 ```text
-target/XenoLevelBar-1.1.0.jar
+target/XenoLevelBar-1.1.2.jar
 ```
 
 See `BUILDING.md` for Linux and Windows details.
@@ -141,6 +141,14 @@ only display visual formatting because Minecraft BossBars do not support events.
 ## Important
 
 A server-only Paper plugin cannot create a literal second native vanilla XP bar at the bottom of an unmodified Minecraft client. XenoLevelBar therefore uses a BossBar while keeping vanilla XP completely independent.
+
+## v1.1.2
+
+- Added MiniMessage formatting to BossBar titles and all player-facing messages.
+- Preserved legacy `&`, `§` and `&#RRGGBB` color support, including mixed formatting.
+- Added MiniMessage click and hover events to chat messages.
+- Added safe fallback behavior for malformed MiniMessage input.
+- Updated the minimum supported Paper version to 1.18.2.
 
 ## v1.1.0
 
