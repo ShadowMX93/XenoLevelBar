@@ -141,27 +141,3 @@ only display visual formatting because Minecraft BossBars do not support events.
 ## Important
 
 A server-only Paper plugin cannot create a literal second native vanilla XP bar at the bottom of an unmodified Minecraft client. XenoLevelBar therefore uses a BossBar while keeping vanilla XP completely independent.
-
-## v1.1.2
-
-- Added MiniMessage formatting to BossBar titles and all player-facing messages.
-- Preserved legacy `&`, `§` and `&#RRGGBB` color support, including mixed formatting.
-- Added MiniMessage click and hover events to chat messages.
-- Added safe fallback behavior for malformed MiniMessage input.
-- Updated the minimum supported Paper version to 1.18.2.
-
-## v1.1.0
-
-- Added asynchronous GitHub Release update checks.
-- Added `/xlb update check` and `/xlb update download` admin commands.
-- Added optional startup auto-download and admin update notifications.
-- Downloads are validated against `plugin.yml` before being staged in the Bukkit/Paper update folder.
-- Added JUnit coverage for updater version comparison and branch CI testing.
-
-## v1.0.0
-
-- First public release of XenoLevelBar.
-- Displays XenoLevels progression on a separate, configurable BossBar.
-- Keeps Minecraft's vanilla XP bar and level untouched.
-- Supports Paper 1.18+, Java 17 bytecode, PlaceholderAPI, and named XenoLevels systems.
-- Includes configurable visibility, messages, permissions, commands, and persistent per-player toggles.
