@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.xenolevelbar'
-version = '1.1.2'
+version = '1.1.3'
 
 description = 'Separate BossBar HUD for XenoLevels progression on Paper 1.18+.'
 

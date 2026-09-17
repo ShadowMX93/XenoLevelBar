@@ -59,7 +59,7 @@ gradlew.bat clean test build
 Gradle output:
 
 ```text
-build/libs/XenoLevelBar-1.1.2.jar
+build/libs/XenoLevelBar-1.1.3.jar
 ```
 
 The included Gradle bootstrap scripts download the pinned Gradle distribution automatically on first use. Build with **JDK 17 or newer**; the Java compiler is forced to output Java 17-compatible bytecode.
@@ -73,7 +73,7 @@ mvn clean package
 Maven output:
 
 ```text
-target/XenoLevelBar-1.1.2.jar
+target/XenoLevelBar-1.1.3.jar
 ```
 
 See `BUILDING.md` for Linux and Windows details.
